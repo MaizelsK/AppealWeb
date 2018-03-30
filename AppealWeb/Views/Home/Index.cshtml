@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    @if (!Request.IsAuthenticated)
+    {
+        <h1>Добро пожаловать</h1>
+        <p class="lead">Вы можете написать обращение без авторизации, для просмотра обращений нужно войти</p>
+        <p>
+            <a href="/Account/Login" class="btn btn-primary btn-lg">Войти &raquo;</a>
+            <a href="/Appeals/Create" class="btn btn-primary btn-lg">Написать обращение &raquo;</a>
+            <hr />
+            Если у вас нет аккаунта, можете
+            <a href="/Users/Create" class="btn btn-primary btn-lg">Зарегистрироваться &raquo;</a>
+        </p>
+    }
+    else
+    {
+        <p class="lead">Напишите обращения или просмотрите список своих обращений</p>
+        <p>
+            <a href="/Appeals/Create" class="btn btn-primary btn-lg">Написать обращение &raquo;</a>
+            <a href="/Appeals/Index" class="btn btn-primary btn-lg">Ваши обращений &raquo;</a>
+        </p>
+    }
+</div>
