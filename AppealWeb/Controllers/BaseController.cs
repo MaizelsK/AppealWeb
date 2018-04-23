@@ -1,7 +1,11 @@
 ﻿using EFLibrary;
 using EFLibrary.Managers;
+using FluentNhibernateLibrary;
+using FluentNhibernateLibrary.Entities;
+using FluentNhibernateLibrary.Services;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 
@@ -9,35 +13,35 @@ namespace AppealWeb.Controllers
 {
     public abstract class BaseController : Controller
     {
-        public IAuthenticationManager AuthManager
+        public AuthenticationService AuthManager
         {
             get
             {
-                return HttpContext.GetOwinContext().Authentication;
+                return HttpContext.GetOwinContext().Get<AuthenticationService>();
             }
         }
 
-        public AppUserManager UserManager
+        public UserService UserManager
         {
             get
             {
-                return HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
+                return HttpContext.GetOwinContext().GetUserManager<UserService>();
             }
         }
 
-        public IdentityDbContext AppealManager
+        public AppealService AppealManager
         {
             get
             {
-                return new IdentityDbContext();
+                return HttpContext.GetOwinContext().GetUserManager<AppealService>();
             }
         }
 
-        public AppRoleManager RoleManager
+        public RoleService RoleManager
         {
             get
             {
-                return HttpContext.GetOwinContext().GetUserManager<AppRoleManager>();
+                return HttpContext.GetOwinContext().GetUserManager<RoleService>();
             }
         }
     }

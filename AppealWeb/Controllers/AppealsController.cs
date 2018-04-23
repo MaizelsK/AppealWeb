@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using System.Data;
 using System.Web.Mvc;
 using AppealWeb.Models;
-using Microsoft.Owin.Security;
-using Microsoft.AspNet.Identity;
-using EFLibrary.Entities;
-using EFLibrary.Managers;
+using FluentNhibernateLibrary.Entities;
+using System.Collections.Generic;
 
 namespace AppealWeb.Controllers
 {
@@ -19,7 +11,7 @@ namespace AppealWeb.Controllers
     {
         public ActionResult Index(string returnUrl)
         {
-            return View(AppealManager.Appeals.ToList());
+            return View(AppealManager.Store.Appeals);
         }
 
         [HttpGet]
@@ -34,8 +26,7 @@ namespace AppealWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AppealModel appeal)
         {
-            var manager = new AppealManager(ModelState);
-            manager.Create(appeal.Theme, appeal.Text);
+            AppealManager.Create(appeal.Theme, appeal.Text, ModelState);
 
             if (ModelState.IsValid)
             {
@@ -45,34 +36,18 @@ namespace AppealWeb.Controllers
             return View(appeal);
         }
 
-        [HttpGet]
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            Appeal appeal = AppealManager.Appeals.Find(id);
-
-            if (appeal == null)
-            {
-                return HttpNotFound();
-            }
-            return View(appeal);
-        }
-
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Appeal appeal)
         {
-            AppealManager manager = new AppealManager();
-
-            if (manager.Delete(id))
+            try
             {
+                AppealManager.Store.DeleteAsync(appeal);
                 return RedirectToAction("Index");
             }
-
-            return View("Errors", new string[] { "Обращение не найдено" });
+            catch (DataException ex)
+            {
+                return View("Errors", new string[] { "Обращение не найдено" });
+            }
         }
 
         protected override void Dispose(bool disposing)

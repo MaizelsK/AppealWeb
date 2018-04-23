@@ -1,6 +1,5 @@
 ﻿using AppealWeb.Models;
-using EFLibrary.Entities;
-using EFLibrary.Managers;
+using FluentNhibernateLibrary.Entities;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -31,8 +30,7 @@ namespace AppealWeb.Controllers
                 }
                 else
                 {
-                    AuthenticationManager manager = new AuthenticationManager();
-                    manager.SignIn(user);
+                    await AuthManager.SignInAsync(user, true, false);
 
                     if (returnUrl == null || returnUrl == "")
                     {

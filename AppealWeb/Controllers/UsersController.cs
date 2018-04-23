@@ -1,6 +1,5 @@
 ﻿using AppealWeb.Models;
-using EFLibrary.Entities;
-using EFLibrary.Managers;
+using FluentNhibernateLibrary.Entities;
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -31,8 +30,7 @@ namespace AppealWeb.Controllers
 
                 if (result.Succeeded)
                 {
-                    AuthenticationManager manager = new AuthenticationManager();
-                    manager.SignIn(user);
+                    await AuthManager.SignInAsync(user, true, false);
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -54,7 +52,7 @@ namespace AppealWeb.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(long id)
         {
             User user = await UserManager.FindByIdAsync(id);
 

@@ -1,4 +1,3 @@
-D:\Visual Studio 2017 Projects\AppealWeb\EFLibrary\obj\Debug\EFLibrary.csproj.CoreCompileInputs.cache
 D:\Visual Studio 2017 Projects\AppealWeb\EFLibrary\bin\Debug\EFLibrary.dll.config
 D:\Visual Studio 2017 Projects\AppealWeb\EFLibrary\bin\Debug\EFLibrary.dll
 D:\Visual Studio 2017 Projects\AppealWeb\EFLibrary\bin\Debug\EFLibrary.pdb
@@ -38,7 +37,8 @@ D:\Visual Studio 2017 Projects\AppealWeb\EFLibrary\bin\Debug\System.Web.Razor.xm
 D:\Visual Studio 2017 Projects\AppealWeb\EFLibrary\bin\Debug\System.Web.WebPages.xml
 D:\Visual Studio 2017 Projects\AppealWeb\EFLibrary\bin\Debug\System.Web.WebPages.Deployment.xml
 D:\Visual Studio 2017 Projects\AppealWeb\EFLibrary\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Visual Studio 2017 Projects\AppealWeb\EFLibrary\bin\Debug\ru\System.Web.Mvc.resources.dll
+D:\Visual Studio 2017 Projects\AppealWeb\EFLibrary\obj\Debug\EFLibrary.csproj.CoreCompileInputs.cache
 D:\Visual Studio 2017 Projects\AppealWeb\EFLibrary\obj\Debug\EFLibrary.dll
 D:\Visual Studio 2017 Projects\AppealWeb\EFLibrary\obj\Debug\EFLibrary.pdb
-D:\Visual Studio 2017 Projects\AppealWeb\EFLibrary\bin\Debug\ru\System.Web.Mvc.resources.dll
 D:\Visual Studio 2017 Projects\AppealWeb\EFLibrary\obj\Debug\EFLibrary.csprojResolveAssemblyReference.cache

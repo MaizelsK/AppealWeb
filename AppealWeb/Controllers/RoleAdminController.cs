@@ -1,5 +1,6 @@
 ﻿using AppealWeb.Models;
-using EFLibrary.Entities;
+//using EFLibrary.Entities;
+using FluentNhibernateLibrary.Entities;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -26,7 +27,7 @@ namespace AppealWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                IdentityResult result = await RoleManager.CreateAsync(new AppRole(name));
+                IdentityResult result = await RoleManager.CreateAsync(new Role(name));
 
                 if (result.Succeeded)
                 {
@@ -44,7 +45,7 @@ namespace AppealWeb.Controllers
         [HttpPost]
         public async Task<ActionResult> Delete(string id)
         {
-            AppRole role = await RoleManager.FindByIdAsync(id);
+            Role role = await RoleManager.FindByIdAsync(id);
 
             if (role != null)
             {
@@ -66,8 +67,8 @@ namespace AppealWeb.Controllers
 
         public async Task<ActionResult> Edit(string id)
         {
-            AppRole role = await RoleManager.FindByIdAsync(id);
-            string[] memberIDs = role.Users.Select(x => x.UserId).ToArray();
+            Role role = await RoleManager.FindByIdAsync(id);
+            long[] memberIDs = role.Users.Select(x => x.Id).ToArray();
 
             IEnumerable<User> members = UserManager.Users.Where(x => memberIDs.Any(y => y == x.Id));
             IEnumerable<User> nonMembers = UserManager.Users.Except(members);
@@ -87,7 +88,7 @@ namespace AppealWeb.Controllers
 
             if (ModelState.IsValid)
             {
-                foreach (string userId in model.IdsToAdd ?? new string[] { })
+                foreach (long userId in model.IdsToAdd ?? new long[] { })
                 {
                     result = await UserManager.AddToRoleAsync(userId, model.RoleName);
 
@@ -97,7 +98,7 @@ namespace AppealWeb.Controllers
                     }
                 }
 
-                foreach (string userId in model.IdsToDelete ?? new string[] { })
+                foreach (long userId in model.IdsToDelete ?? new long[] { })
                 {
                     result = await UserManager.RemoveFromRoleAsync(userId,
                     model.RoleName);

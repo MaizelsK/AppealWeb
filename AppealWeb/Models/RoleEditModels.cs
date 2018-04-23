@@ -1,4 +1,4 @@
-﻿using EFLibrary.Entities;
+﻿using FluentNhibernateLibrary.Entities;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -6,7 +6,7 @@ namespace AppealWeb.Models
 {
     public class RoleEditModel
     {
-        public AppRole Role { get; set; }
+        public Role Role { get; set; }
         public IEnumerable<User> Members { get; set; }
         public IEnumerable<User> NonMembers { get; set; }
     }
@@ -15,7 +15,7 @@ namespace AppealWeb.Models
     {
         [Required]
         public string RoleName { get; set; }
-        public string[] IdsToAdd { get; set; }
-        public string[] IdsToDelete { get; set; }
+        public long[] IdsToAdd { get; set; }
+        public long[] IdsToDelete { get; set; }
     }
 }

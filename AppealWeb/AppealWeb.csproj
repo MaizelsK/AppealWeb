@@ -55,8 +55,11 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="FluentNHibernate, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentNHibernate.2.1.0\lib\net461\FluentNHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="Iesi.Collections, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Iesi.Collections.4.0.2\lib\net461\Iesi.Collections.dll</HintPath>
+      <HintPath>..\packages\Iesi.Collections.4.0.4\lib\net461\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
@@ -92,8 +95,11 @@
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NHibernate, Version=5.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <HintPath>..\packages\NHibernate.5.0.3\lib\net461\NHibernate.dll</HintPath>
+    <Reference Include="NHibernate, Version=5.1.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.5.1.0\lib\net461\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.AspNet.Identity, Version=5.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.AspNet.Identity.5.0.1\lib\net461\NHibernate.AspNet.Identity.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5" />
     <Reference Include="Remotion.Linq, Version=2.1.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
@@ -273,6 +279,10 @@
     <ProjectReference Include="..\EFLibrary\EFLibrary.csproj">
       <Project>{4d084abf-cf0f-4003-a6bd-055d2a9d2de5}</Project>
       <Name>EFLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FluentNhibernate\FluentNhibernateLibrary.csproj">
+      <Project>{91c4110b-8154-4ab4-8327-6a1a6dce8af3}</Project>
+      <Name>FluentNhibernateLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

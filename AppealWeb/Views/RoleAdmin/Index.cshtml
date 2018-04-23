@@ -1,5 +1,6 @@
-﻿@using EFLibrary.Entities;
-@model IEnumerable<AppRole>
+﻿@using NHibernate.AspNet.Identity;
+@*using EFLibrary.Entities;*@
+@model IEnumerable<IdentityRole>
 
 @{
     ViewBag.Title = "Роли";
@@ -20,9 +21,9 @@
                 <td colspan="4" class="text-center">Нет ролей</td>
             </tr>
         }
-        else
+        else 
         {
-            foreach (AppRole role in Model)
+            foreach (IdentityRole role in Model)
             {
                 <tr>
                     <td>@role.Id</td>
@@ -35,8 +36,8 @@
                         else
                         {
                             <p>
-                                @string.Join(", ", role.Users.Select(x =>
-                                                       Html.GetUserName(x.UserId)))
+                                @string.Join(", ", role.Users.Select(x => User.Identity.Name))
+                                                       @*Html.GetUserName(x.UserId)))*@
                             </p>
                         }
                     </td>
