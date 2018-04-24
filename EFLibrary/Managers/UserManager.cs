@@ -1,4 +1,6 @@
-﻿using EFLibrary.Entities;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using DataAccessLibrary;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -6,7 +8,7 @@ using Microsoft.Owin;
 
 namespace EFLibrary.Managers
 {
-    public class AppUserManager : UserManager<User>
+    public class AppUserManager : UserManager<User>, IRepository<User>
     {
         public AppUserManager(IUserStore<User> store) : base(store) { }
 
@@ -31,6 +33,31 @@ namespace EFLibrary.Managers
             };
 
             return manager;
+        }
+
+        public Task<User> FindByIdAsync(int id)
+        {
+            return FindByIdAsync(id);
+        }
+
+        public IEnumerable<User> GetList()
+        {
+            return Users;
+        }
+
+        Task IRepository<User>.CreateAsync(User user)
+        {
+            return CreateAsync(user);
+        }
+
+        Task IRepository<User>.DeleteAsync(User user)
+        {
+            return DeleteAsync(user);
+        }
+
+        Task IRepository<User>.UpdateAsync(User user)
+        {
+            return UpdateAsync(user);
         }
     }
 }

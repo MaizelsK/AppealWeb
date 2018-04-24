@@ -1,15 +1,16 @@
-﻿using FluentNhibernateLibrary.Entities;
+﻿using DataAccessLibrary;
 using FluentNhibernateLibrary.Stores;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace FluentNhibernateLibrary.Services
 {
-    public class AppealService : IDisposable
+    public class AppealService : IRepository<Appeal>
     {
         public AppealStore Store { get; set; }
 
@@ -53,6 +54,31 @@ namespace FluentNhibernateLibrary.Services
         public void Dispose()
         {
             AuthManager.Dispose();
+        }
+
+        public IEnumerable<Appeal> GetList()
+        {
+            return Store.Appeals;
+        }
+
+        public Task<Appeal> FindByIdAsync(int id)
+        {
+            return Store.FindByIdAsync(id);
+        }
+
+        public Task CreateAsync(Appeal appeal)
+        {
+            return Store.CreateAsync(appeal);
+        }
+
+        public Task UpdateAsync(Appeal appeal)
+        {
+            return Store.UpdateAsync(appeal);
+        }
+
+        public Task DeleteAsync(Appeal appeal)
+        {
+            return Store.DeleteAsync(appeal);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using FluentNhibernateLibrary.Entities;
+﻿using DataAccessLibrary;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;

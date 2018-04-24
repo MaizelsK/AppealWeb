@@ -4,10 +4,13 @@ using System;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DataAccessLibrary;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace EFLibrary.Managers
 {
-    public class AppealManager
+    public class AppealManager : IRepository<Appeal>
     {
         private ModelStateDictionary modelState;
 
@@ -23,11 +26,11 @@ namespace EFLibrary.Managers
 
         public AppealManager(ModelStateDictionary modelState) { this.modelState = modelState; }
 
-        public void Create(string theme, string text)
+        public Task CreateAsync(Appeal appeal)
         {
             using (var db = new IdentityDbContext())
             {
-                var existingAppeal = db.Appeals.FirstOrDefault(x => x.Theme == theme);
+                var existingAppeal = db.Appeals.FirstOrDefault(x => x.Theme == appeal.Theme);
 
                 if (existingAppeal != null)
                 {
@@ -35,33 +38,65 @@ namespace EFLibrary.Managers
                 }
                 else
                 {
-                    db.Appeals.Add(new Entities.Appeal
+                    db.Appeals.Add(new Appeal
                     {
-                        Theme = theme,
-                        Text = text,
+                        Theme = appeal.Theme,
+                        Text = appeal.Text,
                         PublishDate = DateTime.Now,
-                        UserId = AuthManager.User.Identity.GetUserId(),
+                        User = db.Users
+                        .SingleOrDefault(x => x.Id == long.Parse(AuthManager.User.Identity.GetUserId()))
                     });
-                    db.SaveChanges();
                 }
+
+                return db.SaveChangesAsync();
             }
         }
 
-        public bool Delete(int id)
+        public Task DeleteAsync(Appeal appeal)
         {
             using (var db = new IdentityDbContext())
             {
-                Entities.Appeal appeal = db.Appeals.Find(id);
+                Appeal searchAppeal = db.Appeals.Find(appeal.Id);
 
-                if (appeal != null)
+                if (searchAppeal != null)
                 {
-                    db.Appeals.Remove(appeal);
-                    db.SaveChanges();
-
-                    return true;
+                    db.Appeals.Remove(searchAppeal);
                 }
 
-                return false;
+                return db.SaveChangesAsync();
+            }
+        }
+
+        public IEnumerable<Appeal> GetList()
+        {
+            using (var context = new IdentityDbContext())
+            {
+                return context.Appeals;
+            }
+        }
+
+        public Task<Appeal> FindByIdAsync(int id)
+        {
+            using (var context = new IdentityDbContext())
+            {
+                return context.Appeals.FindAsync(id);
+            }
+        }
+
+        public Task UpdateAsync(Appeal appeal)
+        {
+            using (var context = new IdentityDbContext())
+            {
+                context.Entry(appeal).State = System.Data.Entity.EntityState.Modified;
+                return context.SaveChangesAsync();
+            }
+        }
+
+        public void Dispose()
+        {
+            using (var context = new IdentityDbContext())
+            {
+                context.Dispose();
             }
         }
     }

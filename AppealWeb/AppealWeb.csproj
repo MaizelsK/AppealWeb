@@ -276,6 +276,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj">
+      <Project>{3EDAF30E-F489-43FA-AABC-EC40A977386C}</Project>
+      <Name>DataAccessLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EFLibrary\EFLibrary.csproj">
       <Project>{4d084abf-cf0f-4003-a6bd-055d2a9d2de5}</Project>
       <Name>EFLibrary</Name>

@@ -1,7 +1,6 @@
-﻿using FluentNhibernateLibrary.Entities;
+﻿using DataAccessLibrary;
 using Microsoft.AspNet.Identity;
 using NHibernate;
-using System;
 using System.Threading.Tasks;
 
 namespace FluentNhibernateLibrary.Stores

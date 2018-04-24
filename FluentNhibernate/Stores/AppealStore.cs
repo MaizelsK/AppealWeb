@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
-using FluentNhibernateLibrary.Entities;
 using NHibernate;
-using System.Linq;
 using System.Collections.Generic;
+using DataAccessLibrary.Entities;
 
 namespace FluentNhibernateLibrary.Stores
 {

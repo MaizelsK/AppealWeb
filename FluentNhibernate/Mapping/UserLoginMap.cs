@@ -1,5 +1,5 @@
-﻿using FluentNHibernate.Mapping;
-using FluentNhibernateLibrary.Entities;
+﻿using DataAccessLibrary;
+using FluentNHibernate.Mapping;
 
 namespace FluentNhibernateLibrary.Mapping
 {
@@ -7,7 +7,7 @@ namespace FluentNhibernateLibrary.Mapping
     {
         public UserLoginMap()
         {
-            Table("AspNetUserLogins");
+            Table("UserLogins");
             Id(x => x.UserId).Column("UserId");
             Map(x => x.LoginProvider);
             Map(x => x.ProviderKey);

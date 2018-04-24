@@ -1,5 +1,5 @@
-﻿using FluentNHibernate.Mapping;
-using FluentNhibernateLibrary.Entities;
+﻿using DataAccessLibrary;
+using FluentNHibernate.Mapping;
 
 namespace FluentNhibernateLibrary.Mapping
 {
@@ -7,7 +7,7 @@ namespace FluentNhibernateLibrary.Mapping
     {
         public UserClaimMap()
         {
-            Table("AspNetUserClaims");
+            Table("UserClaims");
             Id(x => x.Id).GeneratedBy.Identity();
             Map(x => x.ClaimType);
             Map(x => x.ClaimValue);

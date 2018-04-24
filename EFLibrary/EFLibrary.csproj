@@ -99,21 +99,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Appeal.cs" />
     <Compile Include="Managers\AppealManager.cs" />
-    <Compile Include="Entities\AppRole.cs" />
     <Compile Include="Managers\AppRoleManager.cs" />
     <Compile Include="Managers\AuthenticationManager.cs" />
     <Compile Include="IdentityDbContext.cs" />
     <Compile Include="IdentityHelpers.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entities\User.cs" />
     <Compile Include="Managers\UserManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj">
+      <Project>{3edaf30e-f489-43fa-aabc-ec40a977386c}</Project>
+      <Name>DataAccessLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

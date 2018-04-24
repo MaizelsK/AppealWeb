@@ -1,5 +1,5 @@
-﻿using FluentNhibernateLibrary.Entities;
-using FluentNHibernate.Mapping;
+﻿using FluentNHibernate.Mapping;
+using DataAccessLibrary;
 
 namespace FluentNhibernateLibrary.Mapping
 {
@@ -7,7 +7,7 @@ namespace FluentNhibernateLibrary.Mapping
     {
         public UserMap()
         {
-            Table("AspNetUsers");
+            Table("Users");
             Id(x => x.Id).GeneratedBy.Identity();
             Map(x => x.AccessFailedCount);
             Map(x => x.Email);
@@ -24,7 +24,7 @@ namespace FluentNhibernateLibrary.Mapping
             HasMany(x => x.Claims).KeyColumn("UserId")
                 .Not.KeyUpdate().Cascade.All();
 
-            HasMany(x => x.Logins).Table("AspNetUserLogins")
+            HasMany(x => x.Logins).Table("UserLogins")
                 .KeyColumn("UserId").Cascade.All()
                 .Component(m =>
                             {
@@ -33,7 +33,7 @@ namespace FluentNhibernateLibrary.Mapping
                             });
                 //.AsMap(m => m.LoginProvider).AsMap(m => m.ProviderKey);
 
-            HasManyToMany(x => x.Roles).Table("AspNetUserRoles")
+            HasManyToMany(x => x.Roles).Table("UserRoles")
                 .ChildKeyColumn("UserId");
 
             #region Simple NHibernate mapping

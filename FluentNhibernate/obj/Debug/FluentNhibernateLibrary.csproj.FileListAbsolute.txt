@@ -49,3 +49,5 @@ D:\Visual Studio 2017 Projects\AppealWeb\FluentNhibernate\obj\Debug\FluentNhiber
 D:\Visual Studio 2017 Projects\AppealWeb\FluentNhibernate\obj\Debug\FluentNhibernateLibrary.dll
 D:\Visual Studio 2017 Projects\AppealWeb\FluentNhibernate\obj\Debug\FluentNhibernateLibrary.pdb
 D:\Visual Studio 2017 Projects\AppealWeb\FluentNhibernate\obj\Debug\FluentNhibernateLibrary.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2017 Projects\AppealWeb\FluentNhibernate\bin\Debug\DataAccessLibrary.dll
+D:\Visual Studio 2017 Projects\AppealWeb\FluentNhibernate\bin\Debug\DataAccessLibrary.pdb

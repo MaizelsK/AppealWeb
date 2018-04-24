@@ -1,12 +1,12 @@
 ﻿using FluentNhibernateLibrary.Stores;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using FluentNhibernateLibrary.Entities;
 using Microsoft.AspNet.Identity;
 using NHibernate;
 using System.Configuration;
 using FluentNhibernateLibrary.Mapping;
 using NHibernate.Tool.hbm2ddl;
+using DataAccessLibrary;
 
 namespace FluentNhibernateLibrary
 {

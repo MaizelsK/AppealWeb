@@ -1,5 +1,5 @@
-﻿using FluentNHibernate.Mapping;
-using FluentNhibernateLibrary.Entities;
+﻿using DataAccessLibrary;
+using FluentNHibernate.Mapping;
 
 namespace FluentNhibernateLibrary.Mapping
 {
@@ -7,11 +7,11 @@ namespace FluentNhibernateLibrary.Mapping
     {
         public RoleMap()
         {
-            Table("AspNetRoles");
+            Table("Roles");
             Id(x => x.Id).GeneratedBy.Assigned();
             Map(x => x.Name).Length(255).Not.Nullable().Unique();
 
-            HasManyToMany(x => x.Users).Table("AspNetUserRoles")
+            HasManyToMany(x => x.Users).Table("UserRoles")
                 .Cascade.None().ChildKeyColumn("RoleId");
 
             //Bag(x => x.Users, map =>

@@ -1,5 +1,5 @@
-﻿using FluentNhibernateLibrary.Entities;
-using FluentNHibernate.Mapping;
+﻿using FluentNHibernate.Mapping;
+using DataAccessLibrary;
 
 namespace FluentNhibernateLibrary.Mapping
 {

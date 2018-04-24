@@ -1,4 +1,4 @@
-﻿using FluentNhibernateLibrary.Entities;
+﻿using DataAccessLibrary;
 using System.Threading.Tasks;
 
 namespace FluentNhibernateLibrary
