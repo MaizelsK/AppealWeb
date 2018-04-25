@@ -1,4 +1,4 @@
-﻿using FluentNhibernateLibrary.Entities;
+﻿using DataAccessLibrary.Entities;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 

@@ -5,11 +5,9 @@ D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\AppealWeb.dll.config
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\AppealWeb.dll
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\AppealWeb.pdb
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\Antlr3.Runtime.dll
-D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\EFLibrary.dll
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\EntityFramework.dll
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\EntityFramework.SqlServer.dll
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\FluentNHibernate.dll
-D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\FluentNhibernateLibrary.dll
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\Iesi.Collections.dll
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\Microsoft.AI.Agent.Intercept.dll
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\Microsoft.AI.DependencyCollector.dll
@@ -41,10 +39,6 @@ D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\System.Web.WebPages.Deplo
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\System.Web.WebPages.dll
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\System.Web.WebPages.Razor.dll
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\WebGrease.dll
-D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\EFLibrary.pdb
-D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\EFLibrary.dll.config
-D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\FluentNhibernateLibrary.pdb
-D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\FluentNhibernateLibrary.dll.config
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\Antlr3.Runtime.xml
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\EntityFramework.xml
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\EntityFramework.SqlServer.xml
@@ -78,3 +72,6 @@ D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\Microsoft.AI.Web.xml
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\ru\System.Web.Mvc.resources.dll
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\obj\Debug\AppealWeb.dll
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\obj\Debug\AppealWeb.pdb
+D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\DataAccessLibrary.dll
+D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\DataAccessLibrary.pdb
+D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\DataAccessLibrary.dll.config

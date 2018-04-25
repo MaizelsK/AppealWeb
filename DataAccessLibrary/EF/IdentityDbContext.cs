@@ -10,7 +10,7 @@ namespace DataAccessLibrary.EF
 {
     public class IdentityDbContext : DbContext
     {
-        public IdentityDbContext() : base("IdentityDb") { }
+        public IdentityDbContext() : base("AppealDb") { }
 
         public static IdentityDbContext Create()
         {

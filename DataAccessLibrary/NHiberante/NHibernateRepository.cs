@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.NHiberante
 {
-    public class NHibernateRepository<Entity> : IRepository<Entity> where Entity : class
+    public class NHibernateRepository<Entity, Key> : IRepository<Entity, Key> where Entity : class
     {
         private ISession Session { get; set; }
 
-        public NHibernateRepository(ISession session) { Session = session; }
+        public NHibernateRepository()
+        {
+            var newSession = new NHibernateContext().MakeSession();
+            Session = newSession;
+        }
 
         public Task CreateAsync(Entity item)
         {
@@ -23,7 +27,7 @@ namespace DataAccessLibrary.NHiberante
             return Session.DeleteAsync(item);
         }
 
-        public Task<Entity> FindByIdAsync(int id)
+        public Task<Entity> FindByIdAsync(Key id)
         {
             return Session.GetAsync<Entity>(id);
         }

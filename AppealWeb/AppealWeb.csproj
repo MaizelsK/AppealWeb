@@ -280,14 +280,6 @@
       <Project>{3EDAF30E-F489-43FA-AABC-EC40A977386C}</Project>
       <Name>DataAccessLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EFLibrary\EFLibrary.csproj">
-      <Project>{4d084abf-cf0f-4003-a6bd-055d2a9d2de5}</Project>
-      <Name>EFLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FluentNhibernate\FluentNhibernateLibrary.csproj">
-      <Project>{91c4110b-8154-4ab4-8327-6a1a6dce8af3}</Project>
-      <Name>FluentNhibernateLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

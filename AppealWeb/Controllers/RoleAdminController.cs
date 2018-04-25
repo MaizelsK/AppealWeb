@@ -1,6 +1,5 @@
 ﻿using AppealWeb.Models;
-//using EFLibrary.Entities;
-using FluentNhibernateLibrary.Entities;
+using DataAccessLibrary.Entities;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

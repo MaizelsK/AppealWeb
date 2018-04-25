@@ -1,17 +1,24 @@
 ﻿using System.Data;
 using System.Web.Mvc;
 using AppealWeb.Models;
-using FluentNhibernateLibrary.Entities;
-using System.Collections.Generic;
+using DataAccessLibrary;
+using DataAccessLibrary.Entities;
 
 namespace AppealWeb.Controllers
 {
     [Authorize]
     public class AppealsController : BaseController
     {
+        private IRepository<Appeal, int> repository;
+
+        public AppealsController()
+        {
+            repository = RepositoryFactory.GetRepository<Appeal, int>();
+        }
+
         public ActionResult Index(string returnUrl)
         {
-            return View(AppealManager.Store.Appeals);
+            return View(repository.GetList());
         }
 
         [HttpGet]
@@ -26,7 +33,12 @@ namespace AppealWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AppealModel appeal)
         {
-            AppealManager.Create(appeal.Theme, appeal.Text, ModelState);
+            repository.CreateAsync(new Appeal
+            {
+                Text = appeal.Text,
+                Theme = appeal.Theme,
+                User = AuthManager.GetAuthenticatedUser(RepositoryFactory.GetRepository<User, long>())
+            });
 
             if (ModelState.IsValid)
             {
@@ -41,7 +53,7 @@ namespace AppealWeb.Controllers
         {
             try
             {
-                AppealManager.Store.DeleteAsync(appeal);
+                repository.DeleteAsync(appeal);
                 return RedirectToAction("Index");
             }
             catch (DataException ex)
@@ -54,7 +66,7 @@ namespace AppealWeb.Controllers
         {
             if (disposing)
             {
-                AppealManager.Dispose();
+                repository.Dispose();
             }
             base.Dispose(disposing);
         }

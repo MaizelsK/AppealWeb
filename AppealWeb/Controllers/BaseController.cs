@@ -1,11 +1,5 @@
-﻿using EFLibrary;
-using EFLibrary.Managers;
-using FluentNhibernateLibrary;
-using FluentNhibernateLibrary.Entities;
-using FluentNhibernateLibrary.Services;
+﻿using DataAccessLibrary.Services;
 using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
 
@@ -26,14 +20,6 @@ namespace AppealWeb.Controllers
             get
             {
                 return HttpContext.GetOwinContext().GetUserManager<UserService>();
-            }
-        }
-
-        public AppealService AppealManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().GetUserManager<AppealService>();
             }
         }
 

@@ -1,6 +1,5 @@
-﻿@using NHibernate.AspNet.Identity;
-@*using EFLibrary.Entities;*@
-@model IEnumerable<IdentityRole>
+﻿@using DataAccessLibrary.Entities;
+@model IEnumerable<Role>
 
 @{
     ViewBag.Title = "Роли";
@@ -23,7 +22,7 @@
         }
         else 
         {
-            foreach (IdentityRole role in Model)
+            foreach (Role role in Model)
             {
                 <tr>
                     <td>@role.Id</td>

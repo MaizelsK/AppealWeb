@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary
 {
-    public interface IRepository<T> : IDisposable where T : class
+    public interface IRepository<Entity, Key> : IDisposable where Entity : class
     {
-        IEnumerable<T> GetList();
-        Task<T> FindByIdAsync(int id);
-        Task CreateAsync(T item);
-        Task UpdateAsync(T item);
-        Task DeleteAsync(T item);
+        IEnumerable<Entity> GetList();
+        Task<Entity> FindByIdAsync(Key id);
+        Task CreateAsync(Entity item);
+        Task UpdateAsync(Entity item);
+        Task DeleteAsync(Entity item);
     }
 }

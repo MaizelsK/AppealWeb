@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.EF
 {
-    public class EFRepository<Entity> : IRepository<Entity> where Entity : class
+    public class EFRepository<Entity, Key> : IRepository<Entity, Key> where Entity : class
     {
         private IdentityDbContext Context { get; set; }
 
@@ -27,7 +27,7 @@ namespace DataAccessLibrary.EF
             return Context.SaveChangesAsync();
         }
 
-        public Task<Entity> FindByIdAsync(int id)
+        public Task<Entity> FindByIdAsync(Key id)
         {
             return Context.Set<Entity>().FindAsync(id);
         }
@@ -45,7 +45,7 @@ namespace DataAccessLibrary.EF
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Context.Dispose();
         }
     }
 }

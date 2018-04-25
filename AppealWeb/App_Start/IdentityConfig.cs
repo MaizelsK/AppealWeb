@@ -1,11 +1,12 @@
 ﻿using AppealWeb.App_Start;
-using FluentNhibernateLibrary.Services;
-using FluentNhibernateLibrary;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
+using DataAccessLibrary.Entities;
+using DataAccessLibrary.Services;
+using DataAccessLibrary.Stores;
 
 [assembly: OwinStartup(typeof(IdentityConfig))]
 namespace AppealWeb.App_Start
@@ -14,15 +15,8 @@ namespace AppealWeb.App_Start
     {
         public void Configuration(IAppBuilder app)
         {
-            #region Entity Framework
-            //app.CreatePerOwinContext<IdentityDbContext>(IdentityDbContext.Create);
-            //app.CreatePerOwinContext<AppUserManager>(AppUserManager.Create);
-            //app.CreatePerOwinContext<AppRoleManager>(AppRoleManager.Create);
-            #endregion
-
-            app.CreatePerOwinContext(() => new AppealService(new FNDataContext().Appeals));
-            app.CreatePerOwinContext(() => new RoleService(new FNDataContext().Roles));
-            app.CreatePerOwinContext(() => new UserService(new FNDataContext().Users));
+            app.CreatePerOwinContext(() => new RoleService(new RoleStore()));
+            app.CreatePerOwinContext(() => new UserService(new IdentityStore()));
             app.CreatePerOwinContext<AuthenticationService>((options, context) => 
                 new AuthenticationService(context.GetUserManager<UserService>(), context.Authentication));
 

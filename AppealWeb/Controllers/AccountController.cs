@@ -1,5 +1,5 @@
 ﻿using AppealWeb.Models;
-using FluentNhibernateLibrary.Entities;
+using DataAccessLibrary.Entities;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 

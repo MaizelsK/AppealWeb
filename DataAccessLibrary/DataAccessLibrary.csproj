@@ -95,13 +95,27 @@
     <Compile Include="EF\EFRepository.cs" />
     <Compile Include="EF\IdentityDbContext.cs" />
     <Compile Include="Entities\Appeal.cs" />
+    <Compile Include="IAppealStore.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="NHiberante\Mapping\AppealMap.cs" />
+    <Compile Include="NHiberante\Mapping\RoleMap.cs" />
+    <Compile Include="NHiberante\Mapping\UserClaimMap.cs" />
+    <Compile Include="NHiberante\Mapping\UserLoginMap.cs" />
+    <Compile Include="NHiberante\Mapping\UserMap.cs" />
+    <Compile Include="NHiberante\NHibernateContext.cs" />
     <Compile Include="NHiberante\NHibernateRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserClaim.cs" />
     <Compile Include="Entities\UserLogin.cs" />
+    <Compile Include="RepositoryFactory.cs" />
+    <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Services\RoleService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Stores\AppealStore.cs" />
+    <Compile Include="Stores\IdentityStore.cs" />
+    <Compile Include="Stores\RoleStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
