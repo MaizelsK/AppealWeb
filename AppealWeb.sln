@@ -5,10 +5,6 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppealWeb", "AppealWeb\AppealWeb.csproj", "{E9EA9232-6B94-4300-B873-8EE576430DE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFLibrary", "EFLibrary\EFLibrary.csproj", "{4D084ABF-CF0F-4003-A6BD-055D2A9D2DE5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentNhibernateLibrary", "FluentNhibernate\FluentNhibernateLibrary.csproj", "{91C4110B-8154-4AB4-8327-6A1A6DCE8AF3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLibrary", "DataAccessLibrary\DataAccessLibrary.csproj", "{3EDAF30E-F489-43FA-AABC-EC40A977386C}"
 EndProject
 Global
@@ -21,14 +17,6 @@ Global
 		{E9EA9232-6B94-4300-B873-8EE576430DE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9EA9232-6B94-4300-B873-8EE576430DE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9EA9232-6B94-4300-B873-8EE576430DE9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4D084ABF-CF0F-4003-A6BD-055D2A9D2DE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D084ABF-CF0F-4003-A6BD-055D2A9D2DE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D084ABF-CF0F-4003-A6BD-055D2A9D2DE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D084ABF-CF0F-4003-A6BD-055D2A9D2DE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91C4110B-8154-4AB4-8327-6A1A6DCE8AF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91C4110B-8154-4AB4-8327-6A1A6DCE8AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91C4110B-8154-4AB4-8327-6A1A6DCE8AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91C4110B-8154-4AB4-8327-6A1A6DCE8AF3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3EDAF30E-F489-43FA-AABC-EC40A977386C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3EDAF30E-F489-43FA-AABC-EC40A977386C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EDAF30E-F489-43FA-AABC-EC40A977386C}.Release|Any CPU.ActiveCfg = Release|Any CPU

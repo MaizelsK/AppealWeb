@@ -26,19 +26,16 @@ namespace DataAccessLibrary.NHiberante.Mapping
             Map(x => x.UserName).Length(255).Not.Nullable().Unique();
             Map(x => x.SecurityStamp);
 
-            HasMany(x => x.Claims).KeyColumn("UserId")
+            HasMany(x => x.Claims).KeyColumn("User_Id")
                 .Not.KeyUpdate().Cascade.All();
 
             HasMany(x => x.Logins).Table("UserLogins")
-                .KeyColumn("UserId").Cascade.All()
-                .Component(m =>
-                {
-                    m.Map(l => l.LoginProvider);
-                    m.Map(p => p.ProviderKey);
-                });
+                .KeyColumn("User_Id").Cascade.All();
 
-            HasManyToMany(x => x.Roles).Table("UserRoles")
-                .ChildKeyColumn("UserId");
+            HasManyToMany(x => x.Roles).Table("RoleUsers");
+
+            HasMany(x => x.Appeals).Table("Appeals")
+                .KeyColumn("User_Id").Cascade.All();
         }
     }
 }

@@ -47,7 +47,7 @@ namespace AppealWeb.Controllers
         {
             foreach (string error in result.Errors)
             {
-                ModelState.AddModelError("Password", error);
+                ModelState.AddModelError("", error);
             }
         }
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary.Stores
 {
-    public class AppealStore : IAppealStore
+    public class AppealStore : IAppealStore, IDisposable
     {
         private IRepository<Appeal, int> Repository { get; set; }
 
@@ -17,14 +17,29 @@ namespace DataAccessLibrary.Stores
             Repository = RepositoryFactory.GetRepository<Appeal, int>();
         }
 
-        public Task CreateAsync(Appeal appeal)
+        public Task CreateAsync(Appeal appeal, long userId)
         {
-            return Repository.CreateAsync(appeal);
+            return Repository.CreateAppealAsync(appeal, userId);
+        }
+
+        public void Create(Appeal appeal, long userId)
+        {
+            Repository.CreateAppeal(appeal, userId);
+        }
+
+        public List<Appeal> GetList()
+        {
+            return Repository.GetList() as List<Appeal>;
         }
 
         public Task DeleteAsync(Appeal appeal)
         {
             return Repository.DeleteAsync(appeal);
+        }
+
+        public void Delete(Appeal appeal)
+        {
+            Repository.Delete(appeal);
         }
 
         public Task<Appeal> FindByIdAsync(int appealId)
@@ -43,6 +58,11 @@ namespace DataAccessLibrary.Stores
         public Task UpdateAsync(Appeal appeal)
         {
             return Repository.UpdateAsync(appeal);
+        }
+
+        public void Dispose()
+        {
+            Repository.Dispose();
         }
     }
 }

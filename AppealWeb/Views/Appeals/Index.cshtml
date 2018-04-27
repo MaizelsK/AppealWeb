@@ -12,7 +12,7 @@
     @Html.ActionLink("Написать обращение", "Create")
 </p>
 
-@if (Model.Where(x => x.User.Id.Equals(User.Identity.GetUserId())).Count() == 0)
+@if (Model.Where(x => x.User.Id == User.Identity.GetUserId<long>()).Count() == 0)
 {
     <tr>
         <td colspan="3" class="text-center">У вас нет ни одного обращения</td>
@@ -20,7 +20,7 @@
 }
 else
 {
-    List<Appeal> appeals = Model.Where(x => x.User.Id.Equals(User.Identity.GetUserId())).ToList();
+    List<Appeal> appeals = Model.Where(x => x.User.Id == User.Identity.GetUserId<long>()).ToList();
 
     foreach (var item in appeals)
     {
@@ -28,11 +28,11 @@ else
         <h3>@Html.DisplayFor(modelItem => item.Text)</h3>
         <p>
             @Html.DisplayFor(modelItem => item.PublishDate)
-            @using (Html.BeginForm("Delete", "Appeals", new { appeal = item }))
+            @using (Html.BeginForm("Delete", "Appeals", new { appealId = item.Id }))
             {
                 <button class="btn btn-danger btn-xs" type="submit">Удалить</button>
             }
         </p>
-        <hr/>
+        <hr />
     }
 }

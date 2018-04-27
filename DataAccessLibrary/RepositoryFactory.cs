@@ -10,7 +10,7 @@ namespace DataAccessLibrary
 {
     public class RepositoryFactory
     {
-        public static bool IsEntityFramework = true;
+        public static bool IsEntityFramework = false;
 
         public static IRepository<Entity, Key> GetRepository<Entity, Key>() where Entity : class
         {

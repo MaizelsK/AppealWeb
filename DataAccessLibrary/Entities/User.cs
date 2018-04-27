@@ -12,10 +12,10 @@ namespace DataAccessLibrary.Entities
         public User(string username) : this() { UserName = username; }
         public User()
         {
-            Appeals = new List<Appeal>();
-            Logins = new List<UserLogin>();
-            Claims = new List<UserClaim>();
-            Roles = new List<Role>();
+            //Appeals = new List<Appeal>();
+            //Logins = new List<UserLogin>();
+            //Claims = new List<UserClaim>();
+            //Roles = new List<Role>();
         }
 
         public virtual long Id { get; set; }

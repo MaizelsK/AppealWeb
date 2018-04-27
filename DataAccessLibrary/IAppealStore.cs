@@ -14,7 +14,7 @@ namespace DataAccessLibrary
         /// </summary>
         /// <param name="appeal">Appeal to create</param>
         /// <returns></returns>
-        Task CreateAsync(Appeal appeal);
+        Task CreateAsync(Appeal appeal, long userId);
 
         /// <summary>
         /// Delete an Appeal

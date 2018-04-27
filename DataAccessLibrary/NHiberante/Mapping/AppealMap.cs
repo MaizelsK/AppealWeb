@@ -12,13 +12,13 @@ namespace DataAccessLibrary.NHiberante.Mapping
     {
         public AppealMap()
         {
+            Table("Appeals");
             Id(x => x.Id);
             Map(x => x.Theme);
             Map(x => x.Text);
             Map(x => x.PublishDate);
-            References(x => x.User).Column("Id").Cascade.SaveUpdate();
 
-            Table("Appeals");
+            References(x => x.User).Column("User_Id").Cascade.SaveUpdate();
         }
     }
 }

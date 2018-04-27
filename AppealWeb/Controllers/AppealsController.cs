@@ -3,22 +3,25 @@ using System.Web.Mvc;
 using AppealWeb.Models;
 using DataAccessLibrary;
 using DataAccessLibrary.Entities;
+using Microsoft.AspNet.Identity;
+using System;
+using DataAccessLibrary.Stores;
 
 namespace AppealWeb.Controllers
 {
     [Authorize]
     public class AppealsController : BaseController
     {
-        private IRepository<Appeal, int> repository;
+        private AppealStore appealStore;
 
         public AppealsController()
         {
-            repository = RepositoryFactory.GetRepository<Appeal, int>();
+            appealStore = new AppealStore();
         }
 
         public ActionResult Index(string returnUrl)
         {
-            return View(repository.GetList());
+            return View(appealStore.GetList());
         }
 
         [HttpGet]
@@ -33,12 +36,15 @@ namespace AppealWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AppealModel appeal)
         {
-            repository.CreateAsync(new Appeal
+            var userId = AuthManager.AuthenticationManager
+                            .User.Identity.GetUserId<long>();
+
+            appealStore.Create(new Appeal
             {
                 Text = appeal.Text,
                 Theme = appeal.Theme,
-                User = AuthManager.GetAuthenticatedUser(RepositoryFactory.GetRepository<User, long>())
-            });
+                PublishDate = DateTime.Now,
+            }, userId);
 
             if (ModelState.IsValid)
             {
@@ -49,11 +55,13 @@ namespace AppealWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(Appeal appeal)
+        public ActionResult Delete(int appealId)
         {
+            var appeal = appealStore.FindByIdAsync(appealId).Result;
+
             try
             {
-                repository.DeleteAsync(appeal);
+                appealStore.Delete(appeal);
                 return RedirectToAction("Index");
             }
             catch (DataException ex)
@@ -66,7 +74,7 @@ namespace AppealWeb.Controllers
         {
             if (disposing)
             {
-                repository.Dispose();
+                appealStore.Dispose();
             }
             base.Dispose(disposing);
         }

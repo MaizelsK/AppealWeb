@@ -19,14 +19,5 @@ namespace DataAccessLibrary.Services
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
         }
-
-        public User GetAuthenticatedUser(IRepository<User, long> repository)
-        {
-            var user = repository
-                .FindByIdAsync(GetVerifiedUserIdAsync().Result)
-                .Result;
-
-            return user;
-        }
     }
 }

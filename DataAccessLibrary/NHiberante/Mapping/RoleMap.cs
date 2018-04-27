@@ -16,8 +16,7 @@ namespace DataAccessLibrary.NHiberante.Mapping
             Id(x => x.Id).GeneratedBy.Assigned();
             Map(x => x.Name).Length(255).Not.Nullable().Unique();
 
-            HasManyToMany(x => x.Users).Table("UserRoles")
-                .Cascade.None().ChildKeyColumn("RoleId");
+            HasManyToMany(x => x.Users).Table("RoleUsers");
         }
     }
 }

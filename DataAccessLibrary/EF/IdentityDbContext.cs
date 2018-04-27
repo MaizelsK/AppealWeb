@@ -17,11 +17,11 @@ namespace DataAccessLibrary.EF
             return new IdentityDbContext();
         }
 
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Appeal> Appeals { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<UserClaim> UserClaims { get; set; }
-        public virtual DbSet<UserLogin> UserLogins { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Appeal> Appeals { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserClaim> UserClaims { get; set; }
+        public DbSet<UserLogin> UserLogins { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
