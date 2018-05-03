@@ -4,20 +4,21 @@
     ViewBag.Title = "Регистрация";
 }
 
+<script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.4.0.js"></script>
+
 <h2>Регистрация</h2>
 
-
-@using (Html.BeginForm())
+@*@using (Html.BeginForm("Create", "Users", null, FormMethod.Post, new { id = "userForm", name = "userForm" }))
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
         <hr />
 
         <div class="form-group">
             <div class="col-md-10">
                 <label>Имя пользователя</label>
-                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", id = "Username" } })
                 @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -25,7 +26,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 <label>Почта</label>
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", id = "Email" } })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -33,7 +34,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 <label>Пароль</label>
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", id = "Password" } })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -41,19 +42,89 @@
         <div class="form-group">
             <div class="col-md-10">
                 <label>Подтвердите пароль</label>
-                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", id = "PasswordConf" } })
                 @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md col-md-10">
-                <input type="submit" value="Зарегистрироватся" class="btn btn-primary" />
-                @Html.ActionLink("Отмена", "Index", null, new { @class = "btn btn-default" })
+                <input id="submitBtn" type="button" value="Зарегистрироватся" class="btn btn-primary" />
+                @Html.ActionLink("Отмена", "Index", "Home", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+
+    </div>
+}*@
+
+    <div class="form-horizontal">
+        <hr />
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label>Имя пользователя</label>
+                <input id="Username" name="Username" class="form-control" data-bind="text: userName"/>
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", id = "Username" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label>Почта</label>
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", id = "Email" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label>Пароль</label>
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", id = "Password" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label>Подтвердите пароль</label>
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", id = "PasswordConf" } })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md col-md-10">
+                <input id="submitBtn" type="button" value="Зарегистрироватся" class="btn btn-primary" />
+                @Html.ActionLink("Отмена", "Index", "Home", null, new { @class = "btn btn-default" })
             </div>
         </div>
 
     </div>
 }
 
+<script type="text/javascript">
+    $(function () {
+        $("#submitBtn").click(function () {
+            var formData = {
+                Username: $('#Username').val(),
+                Email: $('#Email').val(),
+                Password: $('#Password').val(),
+                ConfirmPassword: $('#PasswordConf').val()
+            }
 
+            $.post("/Users/Create", formData, function (result) {
+                if (result.IsSuccess) {
+                    alert("Ваша учетная запись успешно создана!");
+                    location.pathname = "/Home/Index/";
+                }
+                else {
+                    $('#Username').before("<div class=\"alert alert-danger\">" +
+                        result.ErrorMsg
+                        + "</div>")
+                }
+            })
+        })
+    })
+
+</script>

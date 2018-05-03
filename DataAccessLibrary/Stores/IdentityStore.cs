@@ -14,20 +14,12 @@ namespace DataAccessLibrary.Stores
                                  IUserEmailStore<User, long>, IQueryableUserStore<User, long>
     {
         private IRepository<User, long> Repository { get; set; }
-        public IQueryable<User> Users
-        {
-            get
-            {
-                if (Users == null)
-                    return Repository.GetList().AsQueryable();
-                else
-                    return Users;
-            }
-        }
+        public IQueryable<User> Users { get; }
 
         public IdentityStore()
         {
             Repository = RepositoryFactory.GetRepository<User, long>();
+            Users = Repository.GetList().AsQueryable();
         }
 
         #region IUserStore<User, int>

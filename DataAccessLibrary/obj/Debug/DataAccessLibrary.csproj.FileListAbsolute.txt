@@ -36,5 +36,3 @@ D:\Visual Studio 2017 Projects\AppealWeb\DataAccessLibrary\bin\Debug\Iesi.Collec
 D:\Visual Studio 2017 Projects\AppealWeb\DataAccessLibrary\bin\Debug\NHibernate.xml
 D:\Visual Studio 2017 Projects\AppealWeb\DataAccessLibrary\bin\Debug\Remotion.Linq.xml
 D:\Visual Studio 2017 Projects\AppealWeb\DataAccessLibrary\bin\Debug\Remotion.Linq.EagerFetching.xml
-D:\Visual Studio 2017 Projects\AppealWeb\DataAccessLibrary\bin\Debug\DataAccessLibrary.dll.CodeAnalysisLog.xml
-D:\Visual Studio 2017 Projects\AppealWeb\DataAccessLibrary\bin\Debug\DataAccessLibrary.dll.lastcodeanalysissucceeded

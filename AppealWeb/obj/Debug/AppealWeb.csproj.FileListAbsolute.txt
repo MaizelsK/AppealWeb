@@ -75,5 +75,3 @@ D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\obj\Debug\AppealWeb.pdb
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\DataAccessLibrary.dll
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\DataAccessLibrary.pdb
 D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\DataAccessLibrary.dll.config
-D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\AppealWeb.dll.CodeAnalysisLog.xml
-D:\Visual Studio 2017 Projects\AppealWeb\AppealWeb\bin\AppealWeb.dll.lastcodeanalysissucceeded
