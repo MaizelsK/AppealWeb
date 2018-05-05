@@ -46,7 +46,7 @@ namespace AppealWeb.Controllers
                 }
             }
 
-            return Json(new { IsSuccess = false, ErrorMsg = "Error!" });
+            return Json(new { IsSuccess = false, ErrorMsg = "Ошибка, возможно введены некорректные данные" });
         }
 
         private void AddErrorsFromResult(IdentityResult result)
