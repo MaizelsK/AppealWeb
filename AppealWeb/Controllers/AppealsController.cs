@@ -19,6 +19,7 @@ namespace AppealWeb.Controllers
             appealStore = new AppealStore();
         }
 
+        [Authorize]
         public ActionResult Index(string returnUrl)
         {
             return View(appealStore.GetList());
@@ -33,25 +34,24 @@ namespace AppealWeb.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(AppealModel appeal)
+        public JsonResult Create(AppealModel appeal)
         {
-            var userId = AuthManager.AuthenticationManager
-                            .User.Identity.GetUserId<long>();
-
-            appealStore.Create(new Appeal
-            {
-                Text = appeal.Text,
-                Theme = appeal.Theme,
-                PublishDate = DateTime.Now,
-            }, userId);
-
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                var userId = AuthManager.AuthenticationManager
+                                .User.Identity.GetUserId<long>();
+
+                appealStore.Create(new Appeal
+                {
+                    Text = appeal.Text,
+                    Theme = appeal.Theme,
+                    PublishDate = DateTime.Now,
+                }, userId);
+
+                return Json(new { IsSuccess = true }, JsonRequestBehavior.AllowGet);
             }
 
-            return View(appeal);
+            return Json(new { IsSuccess = false, ErrorMsg = "Ошибка, возможно введены некорректные данные" });
         }
 
         [HttpPost]

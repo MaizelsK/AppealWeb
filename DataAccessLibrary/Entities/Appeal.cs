@@ -6,10 +6,10 @@ namespace DataAccessLibrary.Entities
     public class Appeal
     {
         [Key]
-        public virtual int Id { get; set; }
-        public virtual string Theme { get; set; }
-        public virtual string Text { get; set; }
-        public virtual DateTime PublishDate { get; set; }
+        public int Id { get; set; }
+        public string Theme { get; set; }
+        public string Text { get; set; }
+        public DateTime PublishDate { get; set; }
         public virtual User User { get; set; }
     }
 }

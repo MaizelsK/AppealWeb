@@ -6,39 +6,36 @@
 
 <h2>Обращение</h2>
 
+<div class="form-horizontal">
+    <h4>Заполнте все поля, затем нажмите кнопку "Опубликовать"</h4>
+    <hr />
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Заполнте все поля, затем нажмите кнопку "Опубликовать"</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        
-        <label>Тема обращения</label>
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Theme, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Theme, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <label>Ваше обращение</label>
-        <div class="form-group">
-            <div class="col-md-10" >
-                @Html.TextAreaFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
-                <input type="submit" value="Опубликовать" class="btn btn-default" />
-            </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <label>Тема</label>
+            <input id="theme" data-bind="value: Theme" class="form-control" />
         </div>
     </div>
-}
+
+    <div class="form-group">
+        <div class="col-md-10">
+            <label>Текст</label>
+            <textarea id="Text" rows="5" class="form-control" data-bind="value: Text"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="button" value="Опубликовать" class="btn btn-primary" data-bind="click: postBtn" />
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/knockout-3.4.2.js"></script>
+<script src="~/Scripts/knockout.validation.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/ru-RU.js"></script>
+<script src="~/Scripts/createAppeal.js"></script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

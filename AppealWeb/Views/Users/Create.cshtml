@@ -7,55 +7,6 @@
 
 <h2>Регистрация</h2>
 
-@*@using (Html.BeginForm("Create", "Users", null, FormMethod.Post, new { id = "userForm", name = "userForm" }))
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            <hr />
-
-            <div class="form-group">
-                <div class="col-md-10">
-                    <label>Имя пользователя</label>
-                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", id = "Username" } })
-                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-10">
-                    <label>Почта</label>
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", id = "Email" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-10">
-                    <label>Пароль</label>
-                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", id = "Password" } })
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-10">
-                    <label>Подтвердите пароль</label>
-                    @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", id = "PasswordConf" } })
-                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md col-md-10">
-                    <input id="submitBtn" type="button" value="Зарегистрироватся" class="btn btn-primary" />
-                    @Html.ActionLink("Отмена", "Index", "Home", null, new { @class = "btn btn-default" })
-                </div>
-            </div>
-
-        </div>
-    }*@
-
 <div class="form-horizontal">
     <hr />
 
@@ -63,7 +14,6 @@
         <div class="col-md-10">
             <label>Имя пользователя</label>
             <input id="Username" class="form-control" data-bind="value: Username, valueUpdate: 'afterkeydown'" />
-            <span class="text-danger" data-bind="visible: Username.hasError, text: Username.validationMessage"></span>
         </div>
     </div>
 
@@ -71,7 +21,6 @@
         <div class="col-md-10">
             <label>Почта</label>
             <input id="Email" name="Email" type="email" class="form-control" data-bind="value: Email" />
-            <span class="text-danger" data-bind="visible: Email.hasError, text: Email.validationMessage"></span>
         </div>
     </div>
 
@@ -79,7 +28,6 @@
         <div class="col-md-10">
             <label>Пароль</label>
             <input id="Password" type="password" name="Password" class="form-control" data-bind="value: Password" />
-            <span class="text-danger" data-bind="visible: Password.hasError, text: Password.validationMessage"></span>
         </div>
     </div>
 
@@ -87,7 +35,6 @@
         <div class="col-md-10">
             <label>Подтвердите пароль</label>
             <input id="PassConfirm" type="password" name="PassConfirm" class="form-control" data-bind="value: ConfirmPassword" />
-            <span class="text-danger" data-bind="visible: ConfirmPassword.hasError, text: ConfirmPassword.validationMessage"></span>
         </div>
     </div>
 
@@ -103,145 +50,5 @@
 <script src="~/Scripts/knockout-3.4.2.js"></script>
 <script src="~/Scripts/knockout.validation.min.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
-<script type="text/javascript">
-
-    // Инициализация валидатора (используеться только для EMAIL)
-    ko.validation.init({
-
-        registerExtenders: true,
-        messagesOnModified: true,
-        insertMessages: true,
-        parseInputAttributes: true,
-        errorClass: 'text-danger',
-        messageTemplate: null
-
-    }, true);
-
-    // Валидация для поля username
-    ko.extenders.usernameValidate = function (target) {
-        target.hasError = ko.observable();
-        target.validationMessage = ko.observable();
-
-        var checkLenght = function (value) {
-            if (value.length < 5) {
-                var error = "Длина имени пользователя должна быть не менее 5 символов";
-                return error;
-            }
-
-            return "";
-        }
-
-        function validate(newValue) {
-            target.hasError(newValue == null ? false : true);
-            if (!newValue) {
-                target.validationMessage("Введите имя пользователя");
-            }
-            else {
-                target.validationMessage(checkLenght(newValue));
-            }
-        }
-
-        validate(target());
-        target.subscribe(validate);
-
-        return target;
-    }
-
-    // Валидация для поля Password
-    ko.extenders.passwordValidate = function (target) {
-        target.hasError = ko.observable();
-        target.validationMessage = ko.observable();
-
-        var checkLenght = function (value) {
-            if (value.length < 6) {
-                var error = "Длина пароля должна быть не менее 6 символов";
-                return error;
-            }
-
-            return "";
-        }
-
-        function validate(newValue) {
-            target.hasError(newValue == null ? false : true);
-            if (!newValue) {
-                target.validationMessage("Введите пароль");
-            }
-            else {
-                target.validationMessage(checkLenght(newValue));
-            }
-        }
-
-        validate(target());
-        target.subscribe(validate);
-
-        return target;
-    }
-
-    // Валидация для поля ConfirmPassword
-    ko.extenders.confPasswordValidate = function (target) {
-        target.hasError = ko.observable();
-        target.validationMessage = ko.observable();
-
-        var compareWithPassword = function (value) {
-            if (value != $('#Password').val()) {
-                var error = "Пароли не совпадают!";
-                return error;
-            }
-
-            return "";
-        }
-
-        function validate(newValue) {
-            target.hasError(newValue == null ? false : true);
-            if (!newValue) {
-                target.validationMessage("Подтвердите пароль");
-            }
-            else {
-                target.validationMessage(compareWithPassword(newValue));
-            }
-        }
-
-        validate(target());
-        target.subscribe(validate);
-
-        return target;
-    }
-
-    var userModel = {
-        Username: ko.observable().extend({ usernameValidate: "" }),
-        Email: ko.observable().extend({ required: true, email: true }),
-        Password: ko.observable().extend({ passwordValidate: "" }),
-        ConfirmPassword: ko.observable().extend({ confPasswordValidate: "" }),
-
-        registerBtn: function () {
-            var data = {
-                Username: this.Username(),
-                Email: this.Email(),
-                Password: this.Password(),
-                ConfirmPassword: this.ConfirmPassword()
-            };
-
-            new postData(data);
-        },
-
-        cancelBtn: function () {
-            location.pathname = "/Home/Index/";
-        }
-    }
-    ko.applyBindings(userModel);
-
-    var postData = function (data) {
-        $.post("/Users/Create", data, function (result) {
-            if (result.IsSuccess) {
-                alert("Ваша учетная запись успешно создана!");
-                location.pathname = "/Home/Index/";
-            }
-            else {
-                $('#Username').before("<div class=\"alert alert-danger alert-dismissible\">" +
-                    "<a class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>" +
-                    result.ErrorMsg
-                    + "</div>")
-            }
-        })
-    }
-</script>
+<script src="~/Scripts/ru-RU.js"></script>
+<script src="~/Scripts/createUser.js"></script>
