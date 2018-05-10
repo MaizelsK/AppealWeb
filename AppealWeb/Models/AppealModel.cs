@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace AppealWeb.Models
 {
@@ -13,5 +14,7 @@ namespace AppealWeb.Models
         [StringLength(500, ErrorMessage = "{0} должен содержать как минимум {2} символов", MinimumLength = 10)]
         [Display(Name = "Текст")]
         public string Text { get; set; }
+
+        public HttpPostedFileBase FileData { get; set; }
     }
 }

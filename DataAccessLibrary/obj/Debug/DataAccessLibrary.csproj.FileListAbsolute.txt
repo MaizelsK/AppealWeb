@@ -74,3 +74,6 @@ D:\Visual projects\AppealWeb\DataAccessLibrary\obj\Debug\DataAccessLibrary.cspro
 D:\Visual projects\AppealWeb\DataAccessLibrary\obj\Debug\DataAccessLibrary.dll
 D:\Visual projects\AppealWeb\DataAccessLibrary\obj\Debug\DataAccessLibrary.pdb
 D:\Visual projects\AppealWeb\DataAccessLibrary\obj\Debug\DataAccessLibrary.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2017 Projects\AppealWeb\DataAccessLibrary\obj\Debug\DataAccessLibrary.Migrations.InitialCreate.resources
+D:\Visual Studio 2017 Projects\AppealWeb\DataAccessLibrary\obj\Debug\DataAccessLibrary.csproj.GenerateResource.Cache
+D:\Visual Studio 2017 Projects\AppealWeb\DataAccessLibrary\obj\Debug\DataAccessLibrary.Migrations.AppealUpdate.resources

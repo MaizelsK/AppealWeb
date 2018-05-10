@@ -36,16 +36,20 @@ namespace AppealWeb.Controllers
         [AllowAnonymous]
         public JsonResult Create(AppealModel appeal)
         {
-            if (ModelState.IsValid)
-            {
+            if (ModelState.IsValid) {
                 var userId = AuthManager.AuthenticationManager
                                 .User.Identity.GetUserId<long>();
 
+                byte[] fileData = new byte[appeal.FileData.InputStream.Length];
+                appeal.FileData.InputStream.Read(fileData, 0, (int)appeal.FileData.InputStream.Length);
+                
                 appealStore.Create(new Appeal
                 {
                     Text = appeal.Text,
                     Theme = appeal.Theme,
                     PublishDate = DateTime.Now,
+                    FileName = appeal.FileData.FileName,
+                    FileData = fileData
                 }, userId);
 
                 return Json(new { IsSuccess = true }, JsonRequestBehavior.AllowGet);

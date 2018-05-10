@@ -17,6 +17,8 @@ namespace DataAccessLibrary.NHiberante.Mapping
             Map(x => x.Theme);
             Map(x => x.Text);
             Map(x => x.PublishDate);
+            Map(x => x.FileName);
+            Map(x => x.FileData);
 
             References(x => x.User).Column("User_Id").Cascade.SaveUpdate();
         }

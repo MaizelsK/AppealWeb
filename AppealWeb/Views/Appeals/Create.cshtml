@@ -10,6 +10,8 @@
     <h4>Заполнте все поля, затем нажмите кнопку "Опубликовать"</h4>
     <hr />
 
+    <div data-bind="html: error"></div>
+
     <div class="form-group">
         <div class="col-md-10">
             <label>Тема</label>
@@ -26,6 +28,13 @@
 
     <div class="form-group">
         <div class="col-md-10">
+            <label>Прикрепите файл</label>
+            <input id="file" type="file" class="input-file" accept="image/*" data-bind="file: {data: FileInput}"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10">
             <input type="button" value="Опубликовать" class="btn btn-primary" data-bind="click: postBtn" />
         </div>
     </div>
@@ -33,6 +42,7 @@
 
 <script src="~/Scripts/knockout-3.4.2.js"></script>
 <script src="~/Scripts/knockout.validation.min.js"></script>
+<script src="~/Scripts/knockout-file-bind.js"></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/ru-RU.js"></script>
 <script src="~/Scripts/createAppeal.js"></script>

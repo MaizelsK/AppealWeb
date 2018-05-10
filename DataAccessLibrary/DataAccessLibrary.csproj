@@ -97,6 +97,15 @@
     <Compile Include="Entities\Appeal.cs" />
     <Compile Include="IAppealStore.cs" />
     <Compile Include="IRepository.cs" />
+    <Compile Include="Migrations\201804251142439_InitialCreate.cs" />
+    <Compile Include="Migrations\201804251142439_InitialCreate.Designer.cs">
+      <DependentUpon>201804251142439_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805100935057_AppealUpdate.cs" />
+    <Compile Include="Migrations\201805100935057_AppealUpdate.Designer.cs">
+      <DependentUpon>201805100935057_AppealUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NHiberante\Mapping\AppealMap.cs" />
     <Compile Include="NHiberante\Mapping\RoleMap.cs" />
     <Compile Include="NHiberante\Mapping\UserClaimMap.cs" />
@@ -121,6 +130,13 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804251142439_InitialCreate.resx">
+      <DependentUpon>201804251142439_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805100935057_AppealUpdate.resx">
+      <DependentUpon>201805100935057_AppealUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
