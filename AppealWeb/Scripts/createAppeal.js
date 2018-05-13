@@ -1,4 +1,4 @@
-﻿(function() {
+﻿(function () {
     ko.validation.locale('ru-RU');
     ko.validation.init({
 
@@ -24,6 +24,7 @@
         }),
         FileInput: ko.observable(),
 
+        isVisible: ko.observable(false),
         error: ko.observable(),
 
         postBtn: function () {
@@ -31,7 +32,18 @@
             var data = {
                 Theme: this.Theme(),
                 Text: this.Text(),
-                FileData: this.FileInput()
+                FileData: this.FileInput(),
+                okClick: function () { },
+                child:
+                {
+                    id: 1,
+                    name: 'qwdqw',
+                    child:
+                    {
+                        id: 1,
+                        name: 'qwdqw'
+                    }
+                }
             };
 
             postData(data);
@@ -40,12 +52,13 @@
     ko.applyBindings(appealModel);
 
     var postData = function (data) {
+        appealModel.isVisible(false);
         appealModel.error('');
 
-        var form = new FormData();
-        form.append("Theme", data.Theme);
-        form.append("Text", data.Text);
-        form.append("FileData", data.FileData);
+        var form = convert(data);
+
+        console.log(form.get('child.child.id'));
+        console.log(form.get('child.child.name'));
 
         $.ajax({
             url: '/Appeals/Create',
@@ -59,10 +72,8 @@
                     location.pathname = "/Appeals/Index/";
                 }
                 else {
-                    appealModel.error("<div class=\"alert alert-danger alert-dismissible\">" +
-                        "<a class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>" +
-                        result.ErrorMsg
-                        + "</div>");
+                    appealModel.isVisible(true);
+                    appealModel.error(result.ErrorMsg);
                 }
             }
         });

@@ -219,6 +219,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\createAppeal.js" />
     <Content Include="Scripts\createUser.js" />
+    <Content Include="Scripts\formDataConverters.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />

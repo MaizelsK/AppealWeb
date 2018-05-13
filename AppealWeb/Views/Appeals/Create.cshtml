@@ -10,7 +10,9 @@
     <h4>Заполнте все поля, затем нажмите кнопку "Опубликовать"</h4>
     <hr />
 
-    <div data-bind="html: error"></div>
+    <div data-bind="visible: isVisible(), text: error" class="alert alert-danger alert-dismissible">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    </div>
 
     <div class="form-group">
         <div class="col-md-10">
@@ -46,6 +48,7 @@
 <script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/ru-RU.js"></script>
 <script src="~/Scripts/createAppeal.js"></script>
+<script src="~/Scripts/formDataConverters.js"></script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
